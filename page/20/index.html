@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>十六平米</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="十六平米">
+<meta property="og:url" content="http://www.freehum.com/page/20/index.html">
+<meta property="og:site_name" content="十六平米">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="十六平米">
+  
+    <link rel="alternate" href="/atom.xml" title="十六平米" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">十六平米</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">蜗居一角，随手记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.freehum.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-lenovo-e200-sis650-driver-linux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/01/26/lenovo-e200-sis650-driver-linux/" class="article-date">
+  <time datetime="2007-01-26T11:30:39.000Z" itemprop="datePublished">2007-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/01/26/lenovo-e200-sis650-driver-linux/">联想昭阳E200(SIS 650) 显卡驱动安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>还是E200给安上了slackware11, 不幸的是笔记本显卡用的是 SIS 650 芯片组，对 Linux 基本没有支持，系统默认使用 通用的vesa 驱动，慢的可以。幸运的是找到了 Thomas winischhofer 的网站：<a href="http://www.winischhofer.net/" target="_blank" rel="external">http://www.winischhofer.net/</a>，上面<br>有针对各个Xorg版本编译好的驱动二进制文件及源码，说明文档也很详细。下载我需要的版本sis_drv.o_xorg_6.9.0_gcc3_290906-<br>1.tar.gz，解压复制到/usr/X11R6/lib/modules/drivers/，再改一下/etc/X11/xorg.conf<br>文件即可。</p>
+<p>Thomas winischhofer 另外还提供了显卡控制程序SiSCtrl、frame buffer的驱动和控制程序（sisfb和sisfbctrl）,现在我用的内核已经支持了framebuffer，就先不用了。</p>
+<p>另外 SIS 显卡芯片的驱动也有收费版，提供更多的功能，收费也是迫于无奈，从下面这段话中可以看得出来：</p>
+<p>I have developed this driver since 2000 and spent a lot of my spare<br>time for doing so and prividing support by e-mail and the forum. We are<br>taking about approx 4000-5000 hours here; I stopped counting a long<br>time ago. Since none of the involved hardware manufacturers ever<br>supported me in this process and I - opposed to nearly all other X.org<br>developers - am not paid by anyone for my efforts, I for now decided to<br>stop wasting my precious and rare spare time by supporting these<br>companies by selflessly providing them with the means to sell more of<br>their hardware.</p>
+<p>网站上还有一首有趣的歌：</p>
+<p><a href="http://www.winischhofer.net/w95.ram" target="_blank" rel="external"><br>http://www.winischhofer.net/w95.ram</a></p>
+<p>歌词：</p>
+<p>When I bought it up<br>brought Windows home and tried to boot it up.</p>
+<p>But when I load it up,<br>it says my memory is not enough.</p>
+<p>I’ll be runnin’ out<br>I need some extra RAM to fix it up</p>
+<p>I have to cough it up<br>Open my wallet up - it never stops never stops …</p>
+<p>This is Windows 95<br>It’s sucking up my drive<br>It makes a Pentium fly</p>
+<p>But my PC is obsolete<br>I’ll have to buy myself a brand new machine</p>
+<p>Stick me up<br>You suck me in and then you got me hooked</p>
+<p>There is so much stuff to buy<br>I need a new hard drive<br>It’s gonna suck me dry</p>
+<p>My 386<br>don’t have the speed<br>It takes an hour just to bring it up the screen</p>
+<p>Oh, no, I’m making software buys<br>It’s making B<em>ll G</em>tes come<br>Yo, you make a rich man come…</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/01/26/lenovo-e200-sis650-driver-linux/" data-id="cix5u9egm004bm4qrs7k6d7xh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-slackware" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/01/24/slackware/" class="article-date">
+  <time datetime="2007-01-24T12:08:54.000Z" itemprop="datePublished">2007-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/01/24/slackware/">Slackware 在笔记本上跑，目前存在的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="postText"><br><p><br>笔记本是联想 昭阳E200，安装了slackware 11，目前发现的问题，待解决<br></p><br><p><br>1.风扇一直转，apci 电源管理、CPU降频方面的问题<br></p><br><p><br>2. touch panel&nbsp; 不可用<br></p><br><p><br>3.X下窗口移动很慢，估计显卡驱动没装好<br></p><br></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/01/24/slackware/" data-id="cix5u9egh0049m4qr5u28dmu8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-slackware11-chinese-font" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/01/24/slackware11-chinese-font/" class="article-date">
+  <time datetime="2007-01-24T12:07:46.000Z" itemprop="datePublished">2007-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/01/24/slackware11-chinese-font/">Slackware11 安装中文字体</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1. 复制simsun.ttc 到 /usr/share/fonts/windows/simsun.tff</p>
+
+<p>2.运行一下命令</p>
+
+<p># cd /usr/share/fonts/windows/</p>
+
+<p># mkfontdir</p>
+
+<p># mkfontscale</p>
+
+<p># fc-cache</p>
+
+<p>3. 修改配置文件</p>
+
+<p>/etc/X11/xorg.conf</p>
+
+<p>/etc/fonts/fonts.conf</p>
+
+<p>两个文件中都增加新字体的路径，具体加在哪里？ 自己找吧，每次都忘！</p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/01/24/slackware11-chinese-font/" data-id="cix5u9egk004am4qrr7jahy7v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-emacsmuse" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/01/24/emacsmuse/" class="article-date">
+  <time datetime="2007-01-24T11:52:10.000Z" itemprop="datePublished">2007-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/01/24/emacsmuse/">Emacs Muse</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="first">简介:</p>
+
+<p class="first">Emacs Muse 是一个基于Emacs的写作和发布平台。它简化了文档编辑过程，并且可以选择多种<br><br> 格式进行发布。 Muse利用一种很简单的类似Wiki的格式作为输入。</p>
+
+<p>Muse包括两部分: 一个增强的text模式，用来编辑文档和在Muse工程中随意浏览文档;<br><br> 一组发布策略，用来产生各种不同的格式输出。</p>
+
+<p>主页：</p>
+
+<p><a href="http://www.mwolson.org/projects/MuseMode.html" target="_blank" rel="external"><br><br> http://www.mwolson.org/projects/MuseMode.html</a></p>
+
+<p><a href="http://xcoder.cn/Muse/index.html" target="_blank" rel="external"><br><br> http://xcoder.cn/Muse/index.html</a> （中文）</p>
+
+<p>Emacs Muse 的前身是将停止维护的Emacs Wiki, 用来做个人的cms不错，支持html,pdf,docbook等格式输出。顺便还能学学emacs,这个地球上最强大的编辑器，嗯</p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/01/24/emacsmuse/" data-id="cix5u9ege0047m4qrhg72bm8g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-googlecn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/01/24/googlecn/" class="article-date">
+  <time datetime="2007-01-24T05:11:16.000Z" itemprop="datePublished">2007-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/01/24/googlecn/">Google.cn 的输入提示功能</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br>昨天 Google.cn 增加了输入提示功能，就是输入一个关键词，搜索框下出现一些相关的热门搜索词<br></p><br><p><br>上午逛<a href="http://www.newsmth.net" target="_blank" rel="external">水木</a> ，十大上出现了 ITExpress 版的一个帖子：&ldquo;谷歌输入提示功能，黄色信息直冲眼底&rdquo;，图片看<a href="http://free.donews.com/attachments/2745312712_YilqUnmaW0GP.jpg" target="_blank" rel="external">这里</a>,不过ms Google也是有人在水木潜水的，所以这些词很快就屏蔽掉了<br></p><br><p><br>&nbsp;<br></p><br><p><br>撞墙，李开复的人品问题等等，Google 中国似乎走得很不顺….<br></p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/01/24/googlecn/" data-id="cix5u9egg0048m4qrmh9c0gb7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20070124" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/01/24/20070124/" class="article-date">
+  <time datetime="2007-01-24T01:52:10.000Z" itemprop="datePublished">2007-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/01/24/20070124/">2007年01月24日记事</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br>这才叫速度嘛，赞一下<a href="http://www.fqyy.org/sunu" target="_blank" rel="external">sunu</a><br></p><br><p><br>&nbsp;<br></p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/01/24/20070124/" data-id="cix5u9egd0046m4qrwyva6rqk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20070110" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/01/10/20070110/" class="article-date">
+  <time datetime="2007-01-10T11:30:05.000Z" itemprop="datePublished">2007-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/01/10/20070110/">2007年01月10日记事</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br>今天去公司做了年度工作总结，紧张得很，仿佛又一次的毕业答辩．<br><br>不过结果还算好，讲的时候没有想像中那么哆嗦．<br><br>师兄师姐们很厉害，一年下来都做了不少项目．景仰..<br><br>偶们两个新人几张ppt过完，老总开始讲话　　<br><br>balabala<br><br>一大堆＂管理＂思想，旁征博引的，好生厉害！后来才听说老总刚念完MBA不久<br></p><br><p><br>记住的一点东西就是＂面向客户＂，技术研发要按产品的方向走，诸如此类<br></p><br><p><br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/&nbsp;<br></p><br><p><br>另外两个同事搬家， 想找我合租．<br><br>07年第一天就遭窃（还好我的东西没丢）<br><br><br>&nbsp;&nbsp;&nbsp; 我倒是想搬个好点的地方啊<br><br>　　<br>可现在室友还没回家，租房没到期，而且还有几个人的东西<br><br>一堆的麻烦<br><br>还是过了年再说吧<br></p><br><p><br>&nbsp;<br></p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/01/10/20070110/" data-id="cix5u9egb0045m4qrzj3kop5b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-bye-2006" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/01/01/bye-2006/" class="article-date">
+  <time datetime="2007-01-01T03:31:07.000Z" itemprop="datePublished">2007-01-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/01/01/bye-2006/">Bye, 2006</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2006年，完成大学最后几门课程，结束我的大学生活<br>2006年，找到一份还算满意的工作<br>2006年，住在一个草窝，期望中的独居生活并没有到来<br>2006年，去了几趟上海，第一次去有乡下人进城的感觉<br>2006年，自己没有多大的改变，只是尽量表现得成熟一点<br>2006年，经常性的迷茫，却搞不清思考的是些什么，是价值观么？</p>
+<p>2007年，调整工作状态，别碌碌无为<br>2007年，既然决定搞开发，就得多看书，多学东西<br>2007年，找个好住处，搬家，吃好喝好睡好</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/01/01/bye-2006/" data-id="cix5u9ega0044m4qrqz6jp8ob" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-new-theme" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/12/26/new-theme/" class="article-date">
+  <time datetime="2006-12-26T01:02:22.000Z" itemprop="datePublished">2006-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/12/26/new-theme/">新模板</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从 <a href="http://www.bloggertemplates.org/" target="_blank" rel="external">www.bloggertemplates.org</a> 下载了一个比较适合这个季节的模板，加了点<a href="http://www.dynamicdrive.com/dynamicindex3/snownoimages.htm" target="_blank" rel="external">雪花效果</a>。</p>
+<p>不过在 IE 下面不太正常，有些背景显示不出来，Firefox 还没发现问题。</p>
+<p>可能是CSS有问题吧，还要再研究一下，顺便把一些链接加上。</p>
+<p><a href="http://photo4.yupoo.com/20061226/091110_1881663392_aepifwxf.jpg" target="_blank" rel="external"><img src="http://photo4.yupoo.com/20061226/091110_1881663392_aepifwxf.jpg" alt=" " width="501" height="922"></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2006/12/26/new-theme/" data-id="cix5u9eg90043m4qrpfpz6le7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2006-12-24" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/12/24/2006-12-24/" class="article-date">
+  <time datetime="2006-12-24T11:21:09.000Z" itemprop="datePublished">2006-12-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2006/12/24/2006-12-24/">扯的</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <table style="border: 1px solid #E7E7E7" border="0" cellpadding="0" cellspacing="7" width="225"><tbody><tr><td align="center">十六平米</td></tr><tr><td><table style="text-align: center;font-size: 12px;color: #323232" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td valign="bottom">81.0%男性倾向,19.0%女性倾向</td></tr><tr><td align="center"><table style="text-align: center;font-size: 12px;color: #323232" border="0" cellpadding="0" cellspacing="0" width="165"><tbody><tr><td bgcolor="#91cdff" height="9" width="133"></td><td bgcolor="#ffb1cd" height="9" width="31"></td></tr></tbody></table></td></tr><tr><td align="left">评点：您的文风冷静而镇定，言语间展现出强悍的思辨能力与恢宏的胸襟，一个男子汉的阳刚形象跃然纸上。</td></tr><tr><td><a href="http://www.yodao.com/" target="_blank">yodao</a> | <a href="http://www.yodao.com/blogender/" target="_blank">博客男女</a></td></tr></tbody></table></td></tr></tbody></table>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2006/12/24/2006-12-24/" data-id="cix5u9eg70042m4qrxxqks42n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/19/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/21/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/life/photo/">photo</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">December 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">October 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/09/">September 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/08/">August 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">July 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/06/">June 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/04/">April 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">March 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/02/">February 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/01/">January 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/12/">December 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/11/">November 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">October 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/09/">September 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/08/">August 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/07/">July 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/06/">June 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">April 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">March 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/02/">February 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">January 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/12/">December 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/11/">November 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">October 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">September 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/08/">August 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/06/">June 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/05/">May 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/04/">April 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/02/">February 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/01/">January 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/12/">December 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/11/">November 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/10/">October 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">September 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/07/">July 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">June 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/05/">May 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/04/">April 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/02/">February 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/01/">January 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/11/">November 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">October 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/09/">September 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/08/">August 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/07/">July 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/06/">June 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/05/">May 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/04/">April 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/03/">March 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/02/">February 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/01/">January 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/12/">December 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/11/">November 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/10/">October 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/09/">September 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/08/">August 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/07/">July 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/06/">June 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/05/">May 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/04/">April 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/03/">March 2005</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/12/26/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/26/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/26/adb-debug-over-network/">adb 网络调试</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/17/operate-usb-device-under-android-by-libusb-without-root/">Android 用 libusb 操作 USB 设备，无须 root</a>
+          </li>
+        
+          <li>
+            <a href="/2012/12/20/dr-com/">Android 1.5 适用的 Dr.com 客户端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Zhang Hu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

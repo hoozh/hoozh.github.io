@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>硬盘安装 ubuntu 6.10 记录 | 十六平米</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装环境及需求
+硬件：联想昭阳200（C盘预装了 Windows XP pro)软件：1.GRUB4DOSgrub_for_dos-0.4.1.zip网址：http://sourceforge.net/projects/grub4dos/
+2.Ubuntu 6.10镜像文件:ubuntu-6.10-alternate-i386.iso
+3.用于硬盘安装的内核与内存文件系统initrd.gzvmli">
+<meta property="og:type" content="article">
+<meta property="og:title" content="硬盘安装 ubuntu 6.10 记录">
+<meta property="og:url" content="http://www.freehum.com/2006/11/23/install-ubuntu610/index.html">
+<meta property="og:site_name" content="十六平米">
+<meta property="og:description" content="安装环境及需求
+硬件：联想昭阳200（C盘预装了 Windows XP pro)软件：1.GRUB4DOSgrub_for_dos-0.4.1.zip网址：http://sourceforge.net/projects/grub4dos/
+2.Ubuntu 6.10镜像文件:ubuntu-6.10-alternate-i386.iso
+3.用于硬盘安装的内核与内存文件系统initrd.gzvmli">
+<meta property="og:updated_time" content="2016-12-26T07:04:16.975Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="硬盘安装 ubuntu 6.10 记录">
+<meta name="twitter:description" content="安装环境及需求
+硬件：联想昭阳200（C盘预装了 Windows XP pro)软件：1.GRUB4DOSgrub_for_dos-0.4.1.zip网址：http://sourceforge.net/projects/grub4dos/
+2.Ubuntu 6.10镜像文件:ubuntu-6.10-alternate-i386.iso
+3.用于硬盘安装的内核与内存文件系统initrd.gzvmli">
+  
+    <link rel="alternate" href="/atom.xml" title="十六平米" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">十六平米</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">蜗居一角，随手记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.freehum.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-install-ubuntu610" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2006/11/23/install-ubuntu610/" class="article-date">
+  <time datetime="2006-11-23T12:06:14.000Z" itemprop="datePublished">2006-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      硬盘安装 ubuntu 6.10 记录
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>安装环境及需求</strong></p>
+<p>硬件：联想昭阳200（C盘预装了 Windows XP pro)<br>软件：<br>1.GRUB4DOS<br>grub_for_dos-0.4.1.zip<br>网址：<a href="http://sourceforge.net/projects/grub4dos/" target="_blank" rel="external">http://sourceforge.net/projects/grub4dos/</a></p>
+<p>2.Ubuntu 6.10镜像文件:<br>ubuntu-6.10-alternate-i386.iso</p>
+<p>3.用于硬盘安装的内核与内存文件系统<br>initrd.gz<br>vmlinuz<br>下载：<a href="ftp://ftp.ubuntu.com/ubuntu/dists/edgy/main/installer-i386/current/images/hd-media" target="_blank" rel="external">ftp://ftp.ubuntu.com/ubuntu/dists/edgy/main/installer-i386/current/images/hd-media</a></p>
+<p><strong>第0步：</strong>放置文件</p>
+<p>将下载的vmlinuz、initrd.gz、ubuntu-6.10-alternate-i386.iso 放置到某个盘的根目录下，这样使用比较方便。我把三个文件全部放在 D: 盘</p>
+<p>放置文件的磁盘文件系统格式最好是FAT32格式，NTFS 没有试过。</p>
+<p>当然，如果是ext3、reiserfs等格式，也是可以的。</p>
+<p><strong>第1步：</strong>安装GRUB4DOS<br>1) 解压 grub_for_dos-0.4.1.zip 中 grldr 文件到C盘根目录<br>2) 编辑 c:\boot.ini 文件，增加一行</p>
+<p><blockquote>C:\grldr=”启动GRUB”</blockquote><br>这样，GRUB4DOS就安装好了，启动完之后会出现Grub的选择菜单</p>
+<p><strong>第2步：</strong>启动机子后，进入grub的菜单，进入命令模式，分别输入以下命令。并回车</p>
+<p><blockquote>grub&gt; kernel (hd0,4)/vmlinuz root=/dev/ram ramdisk_size=32000 devfs=mount,dall<br>grub&gt; initrd (hd0,4)/initrd.gz<br>grub&gt; boot</blockquote><br>(hd0,4)表示的是第一块硬盘的第一个逻辑分区，这与linux下的磁盘表示方法不太一样，对应linux的表示应该是hda5。按照自己的情况修改即可。</p>
+<p><strong>第3步：</strong>启动安装程序<br>正常来说，程序会自己找到 ISO 镜像文件，但我没找到。经网友指导，进入shell，运行以下命令即可：</p>
+<p><blockquote>mkdir /dev/loop<br>mknod /dev/loop/0 b 7 0<br>mknod /dev/loop/1 b 7 1<br>exit</blockquote><br>返回安装主界面，继续安装</p>
+<p><strong>注意：</strong>ubuntu ISO有两个版本，desktop 和 alternate,<br>desktop 版本的安装其实是以 livecd 方式启动后再安装，实际上的安装就是复制的过程，速度比较快。我的笔记本因为光驱读盘慢，最后没装成功:(</p>
+<p>而 alternate 提供了传统的安装方式，也提供了更多的可控制选项，比如文本安装，OEM安装（不太明白）</p>
+<p>desktop不支持上述的硬盘安装方法，但人的力量是无穷的，详情可到ubuntu 的支持论坛上瞧瞧。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2006/11/23/install-ubuntu610/" data-id="cix5u9efl003om4qrzs7v28uh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2006/11/28/-/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          李晓东 &amp;#8211; 冬季校园
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2006/11/20/pda/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">彩铃 · 手机 ·  PDA</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/life/photo/">photo</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">December 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">October 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/09/">September 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/08/">August 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">July 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/06/">June 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/04/">April 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">March 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/02/">February 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/01/">January 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/12/">December 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/11/">November 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">October 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/09/">September 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/08/">August 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/07/">July 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/06/">June 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">April 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">March 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/02/">February 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">January 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/12/">December 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/11/">November 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">October 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">September 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/08/">August 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/06/">June 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/05/">May 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/04/">April 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/02/">February 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/01/">January 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/12/">December 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/11/">November 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/10/">October 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">September 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/07/">July 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">June 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/05/">May 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/04/">April 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/02/">February 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/01/">January 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/11/">November 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">October 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/09/">September 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/08/">August 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/07/">July 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/06/">June 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/05/">May 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/04/">April 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/03/">March 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/02/">February 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/01/">January 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/12/">December 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/11/">November 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/10/">October 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/09/">September 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/08/">August 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/07/">July 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/06/">June 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/05/">May 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/04/">April 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/03/">March 2005</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/12/26/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/26/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/26/adb-debug-over-network/">adb 网络调试</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/17/operate-usb-device-under-android-by-libusb-without-root/">Android 用 libusb 操作 USB 设备，无须 root</a>
+          </li>
+        
+          <li>
+            <a href="/2012/12/20/dr-com/">Android 1.5 适用的 Dr.com 客户端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Zhang Hu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

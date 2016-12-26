@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>十六平米</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="十六平米">
+<meta property="og:url" content="http://www.freehum.com/page/18/index.html">
+<meta property="og:site_name" content="十六平米">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="十六平米">
+  
+    <link rel="alternate" href="/atom.xml" title="十六平米" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">十六平米</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">蜗居一角，随手记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.freehum.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2007-04-06" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/04/06/2007-04-06/" class="article-date">
+  <time datetime="2007-04-06T05:21:38.000Z" itemprop="datePublished">2007-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/04/06/2007-04-06/">引导问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在台式机上顺利安装了slackware，想用grub来着，就用CD引导手动安装了一下，结果windows进不去了，又在笔记本上试，结果笔记本上windows也进不去了，真惨<br><br><br><br>刚才搜索了一下，发现是我的命令错误，我执行了: grub-install /dev/hda1<br><br><br><br>这样把grub安装在了/dev/hda1，覆盖了 windows 的引导信息，原本是应该安装在/dev/hda的，即<br><br><br><br>grub-install /dev/hda<br><br><br><br>怎么恢复呢，当然是重写或修复windows的引导信息喽<br><br><br><br>进入linux，root执行 :<br><br><br><br>dd if=/dev/hda1 of=/root/backupboot.hda1 count=1 skip=6<br><br>dd if=/root/backupboot.hda1 of=/dev/hda1 count=1<br><br><br><br>原理据说是只是覆盖了前面512字节的数据,拿后面的备份还原就可以了<br><br>试过，果然可以！<br><br><br><br><br><br>另外我在网上找到的方法还有：<br><br><br><br>用windows的安装盘引导，<br><br>进入故障控制台,输入一下命令:<br><br>c:&gt;fixboot c:<br><br>c:&gt;bootcfg /scan<br><br><br><br>不过没成功，显示 &quot;disk error&quot;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/04/06/2007-04-06/" data-id="cix5u9ehd004vm4qryv516pnt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-slackware" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/04/03/slackware/" class="article-date">
+  <time datetime="2007-04-03T07:24:54.000Z" itemprop="datePublished">2007-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/04/03/slackware/">Slackware 下鼠标滚轮的问题解决</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每次安装完Slackware都要设置一下鼠标滚轮，都快习惯了，但还是记不住语句怎么写，因为我根本不知道为什么-_-!<br><br><br><br>解决办法：<br><br>修改/etc/X11/xorg.conf文件<br><br><br><br>修改<br><br>Option &quot;Protocol&quot; &quot;PS/2&quot;<br><br>为<br><br>Option &quot;Protocol&quot; &quot;IMPS/2&quot;<br><br><br><br>增加一行<br><br>Option &quot;ZAxisMapping&quot; &quot;4 5&quot;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/04/03/slackware/" data-id="cix5u9ehb004um4qrjmx8eeew" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-outlook2003" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/04/01/outlook2003/" class="article-date">
+  <time datetime="2007-04-01T05:20:04.000Z" itemprop="datePublished">2007-04-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/04/01/outlook2003/">最小化 OutLook 2003 到系统栏</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始-&gt;运行 regedit</p>
+<p>展开 HKEY_CURRENT_USER/Software/Microsoft/Office/11.0/Outlook/Preferences”，</p>
+<p>然后<br>右击空白区域，新建一个DWORD值“MinToTray”，并设键值为1，做完这些步骤，就可以最小化Outlook2003到系统托盘中了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/04/01/outlook2003/" data-id="cix5u9eha004tm4qrit4k5iku" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2007-03-30" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/03/30/2007-03-30/" class="article-date">
+  <time datetime="2007-03-30T05:23:07.000Z" itemprop="datePublished">2007-03-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/03/30/2007-03-30/">2007-03-30 记事</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>所里继续进行刻板机的培训，上午去看了一会，没多大意思，于是决定下午撤退</p>
+<p>后来想起来中午要搞消防实战演练的，结果研究所队人不齐，算弃权了，正合我意</p>
+<p>下午一直在调试 wifi 的驱动,板子一直连不上去，两方面需要加强</p>
+<p>1.wince 驱动基本知识<br>2.pb下的程序调试以及驱动调试方法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/03/30/2007-03-30/" data-id="cix5u9eh9004sm4qrhbmesall" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20070326" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/03/26/20070326/" class="article-date">
+  <time datetime="2007-03-26T14:20:11.000Z" itemprop="datePublished">2007-03-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/03/26/20070326/">2007年03月26日记事</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习，学习，天天学习</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/03/26/20070326/" data-id="cix5u9eh8004rm4qrhxgduy3m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2007-03-16" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/03/16/2007-03-16/" class="article-date">
+  <time datetime="2007-03-16T15:17:24.000Z" itemprop="datePublished">2007-03-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/03/16/2007-03-16/">猪啊猪</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br>&nbsp;&nbsp;&nbsp;&nbsp;看到 ysy 在sunu blog上的留言，窝才注意到今年春晚上没有提到&ldquo;猪&rdquo;字，本着学习的态度，google了一把，找到一篇文章<a href="http://www.nx.xinhuanet.com/tsnx/wzw/6.htm" target="_blank" rel="external">http://www.nx.xinhuanet.com/tsnx/wzw/6.htm</a>，摘录了一些。&nbsp;<br></p><br><p><br>&nbsp;&nbsp;&nbsp; 很久很久以前，在阿拉伯半岛，因为气候炎热，且土地多为沙漠，不利于猪的生长和发展，猪的传染病很多，所以阿拉伯半岛就已经有禁食猪肉的习俗，古埃及人也视猪是不洁和厌恶之物。<br></p><br><p><br>&nbsp;&nbsp;&nbsp;&nbsp;犹太教创立后，为了适应当时阿拉伯地区禁养猪的习俗，把禁食猪肉当作戒律写进圣经《旧约全书》中的《未利篇》第十一章中：&ldquo;凡蹄分两半，倒嚼走兽，你们都可以吃&hellip;&hellip;猪因为蹄分两半，却不反刍，就与你们不洁净。这些兽的肉你们不可吃，死的你们不可摸，都与你们不洁净。&rdquo;<br></p><br><p><br>&nbsp;&nbsp;&nbsp;&nbsp;唐宋时期，阿拉伯和波斯的穆斯林到中国经商，因他们信仰伊斯兰教，所以把禁食猪肉的习俗也带到了中国。经过几百年历史的发展，他们中的大多数人成为后来的回族。<br></p><br><p><br>&nbsp;&nbsp;&nbsp; 后来，回族在政治上受到压迫，回族的宗教信仰和风俗习惯也开始受到限制和歧视，甚至诬蔑。这说明明末回民不食猪肉的风俗习惯，已遭到统治阶级的破坏。<br></p><br><p><br>　　清代，回民不吃猪肉的风俗习惯更是受到嘲弄和污蔑。统治阶级在残酷镇压西北回民起义后，为了区分出回民与汉民，以是否吃猪肉来检验，以致引起更多回民的反抗与斗争。<br></p><br><p><br>&nbsp;&nbsp;&nbsp; 国民党统治时期，回民不吃猪肉同样遭到污辱。《南华文艺》公然刊载文章，造谣说回族清真寺里供有猪像，这是回族的祖先等等，引起了回民的强烈反抗，以至发展到全国回族的反抗运动。<br></p><br><p><br>&nbsp;&nbsp;&nbsp; 此后时期作者没提，省略…<br></p><br><p><br>&nbsp;&nbsp;&nbsp; 到了信息泛滥的时代，回民以猪为崇拜图腾的谣言依然通过网络，手机短信上传播。<br></p><br><p><br>&nbsp;&nbsp;&nbsp; 而此时，窝天朝正提出和谐社会的伟大概念，所以一切不和谐的字眼都是不应该出现的，以至于07年春晚没出现一个&ldquo;猪&rdquo;字。<br></p><br><p><br>&nbsp;&nbsp;&nbsp; 于是窝想，要是当年阿拉伯半岛的人们对猪不反感，也许今年赵本山大叔的小品就是&ldquo;公猪下崽&rdquo;了&hellip;&hellip;<br></p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/03/16/2007-03-16/" data-id="cix5u9eh7004qm4qrwl86vwel" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20070312" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/03/12/20070312/" class="article-date">
+  <time datetime="2007-03-12T12:40:11.000Z" itemprop="datePublished">2007-03-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/03/12/20070312/">2007年03月12日记事</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>趁着周末，挪了个窝，感觉还不错</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/03/12/20070312/" data-id="cix5u9eh6004pm4qrhxybma8a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2007-03-07" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/03/07/2007-03-07/" class="article-date">
+  <time datetime="2007-03-07T06:32:16.000Z" itemprop="datePublished">2007-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/03/07/2007-03-07/">满眼的强悍文风，除了我，挖哈哈</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <table style="border: 1px solid #E7E7E7" border="0" cellpadding="0" cellspacing="7" width="225"><tbody><tr><td align="center">十六平米</td></tr><tr><td><table style="text-align: center;font-size: 12px;color: #323232" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td valign="bottom">37.0%男性倾向,63.0%女性倾向</td></tr><tr><td align="center"><table style="text-align: center;font-size: 12px;color: #323232" border="0" cellpadding="0" cellspacing="0" width="165"><tbody><tr><td bgcolor="#91cdff" height="9" width="61"></td><td bgcolor="#ffb1cd" height="9" width="103"></td></tr></tbody></table></td></tr><tr><td align="left">评点：文章构思曲折精巧，文字清新脱俗，婉约中透出洒脱，可谓淡妆浓抹总相宜。</td></tr><tr><td><a href="http://www.yodao.com/" target="_blank">yodao</a> | <a href="http://www.yodao.com/blogender/" target="_blank">博客男女</a></td></tr></tbody></table></td></tr></tbody></table><br><p><br>&nbsp;<br></p><br><p><br>&nbsp;<br></p><br><p><br>去年的：<br><br><a href="http://www.fqyy.org/laoz/?aid=3074&amp;nbsp" target="_blank" rel="external">http://www.fqyy.org/laoz/?aid=3074&amp;nbsp</a>;<br></p><p><br><table style="border: 1px solid #E7E7E7" border="0" cellpadding="0" cellspacing="7" width="225"><tbody><tr><td align="center">十六平米</td></tr><tr><td><table style="text-align: center;font-size: 12px;color: #323232" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td valign="bottom">81.0%男性倾向,19.0%女性倾向</td></tr><tr><td align="center"><table style="text-align: center;font-size: 12px;color: #323232" border="0" cellpadding="0" cellspacing="0" width="165"><tbody><tr><td bgcolor="#91cdff" height="9" width="133"></td><td bgcolor="#ffb1cd" height="9" width="31"></td></tr></tbody></table></td></tr><tr><td align="left">评点：您的文风冷静而镇定，言语间展现出强悍的思辨能力与恢宏的胸襟，一个男子汉的阳刚形象跃然纸上。</td></tr><tr><td><a href="http://www.yodao.com/" target="_blank">yodao</a> | <a href="http://www.yodao.com/blogender/" target="_blank">博客男女</a></td></tr></tbody></table></td></tr></tbody></table></p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/03/07/2007-03-07/" data-id="cix5u9eh5004om4qrx3tbv6gn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-yuanxiao" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/03/04/yuanxiao/" class="article-date">
+  <time datetime="2007-03-04T14:53:57.000Z" itemprop="datePublished">2007-03-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/03/04/yuanxiao/">前面的冷笑话作废~~</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>写了那一行字过一个小时的样子，房东女儿给我拿来了两个粽子，热的. 窝想，虽然元宵节吃粽子奇怪了点，不过拿来填填肚子也不错，于是先吃了一个。</p>
+<p>过了半个钟头，伊又端来一碗汤圆，六个，六六大顺。</p>
+<p>撑死窝了。</p>
+<p>话真是不能乱说，阿弥佗佛!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/03/04/yuanxiao/" data-id="cix5u9eh4004nm4qre560zspy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-phone" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2007/03/04/phone/" class="article-date">
+  <time datetime="2007-03-04T14:48:14.000Z" itemprop="datePublished">2007-03-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2007/03/04/phone/">想换手机了</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前段时间，有很多人向窝抱怨通话质量不好，特别在甬江村，如果在房间里接电话，对方根本听不到声音，于是冬天的时候，窝总是很担心晚上有人打来电话，得跑到院子里接，一边抖一边说话。</p>
+<p>琢磨着要换个手机。</p>
+<p>现在的 Nokia 2100 用了两年半多，通话时间有101小时多一点，现在出现的问题除了通话质量不如以前，感觉待机时间也变短了。其他倒是没什么问题。不过窝依然相信Nokia的品质，毕竟它从床上掉下来好几次，要知道学校公寓的床比人还要高，低处的就更数不清次数了，而且窝也经常边充电边打电话。</p>
+<p>还是想换个实用一点的，功能不必太多，但却完美的。举个反例，一个同学新买的国产手机，播放mp3，但声音调到最大时，有破音；短信彩信，GPRS功能齐全的狠，但是收到某些短信居然死机…</p>
+<p>对窝来说，Nokia 2100 的优点在于：</p>
+<ol>
+<li><p>通话质量好，当然不是指现在</p>
+</li>
+<li><p>屏幕清晰，反应速度快。哦，也许这是所有非彩屏手机优点</p>
+</li>
+<li><p>软件稳定，设置合理，简单</p>
+</li>
+<li><p>按键间隔大，舒服</p>
+</li>
+<li><p>皮实</p>
+</li>
+<li><p>大小合适</p>
+</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li><p>存储空间小，短信、通讯录（且一个名字只有一个号码），备忘录</p>
+</li>
+<li><p>待机时间短，最高只有150小时。查了查 Philip 的9@9a, 1000小时，惊叹！只可惜功能太少</p>
+</li>
+<li><p>输入法，没有联想输入</p>
+</li>
+<li><p>闹钟只能设一个</p>
+</li>
+<li><p>卸载电池后要重设时间</p>
+</li>
+</ol>
+<p>都是细节的东西，先记录下来，比便日后参考。最近要搬家，也许信号变好，就不用急着换了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.freehum.com/2007/03/04/phone/" data-id="cix5u9eh1004lm4qr8co3b90g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/17/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/19/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/life/photo/">photo</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">December 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/11/">November 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/08/">August 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">July 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">June 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">May 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">April 2011</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/12/">December 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/11/">November 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/10/">October 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/09/">September 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/08/">August 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">July 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/06/">June 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/04/">April 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">March 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/02/">February 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/01/">January 2010</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/12/">December 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/11/">November 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">October 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/09/">September 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/08/">August 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/07/">July 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/06/">June 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">April 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">March 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/02/">February 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">January 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/12/">December 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/11/">November 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">October 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">September 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/08/">August 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/06/">June 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/05/">May 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/04/">April 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/02/">February 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/01/">January 2008</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/12/">December 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/11/">November 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/10/">October 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">September 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/07/">July 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">June 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/05/">May 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/04/">April 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/03/">March 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/02/">February 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/01/">January 2007</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/12/">December 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/11/">November 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">October 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/09/">September 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/08/">August 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/07/">July 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/06/">June 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/05/">May 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/04/">April 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/03/">March 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/02/">February 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/01/">January 2006</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/12/">December 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/11/">November 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/10/">October 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/09/">September 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/08/">August 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/07/">July 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/06/">June 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/05/">May 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/04/">April 2005</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2005/03/">March 2005</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/12/26/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/26/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/26/adb-debug-over-network/">adb 网络调试</a>
+          </li>
+        
+          <li>
+            <a href="/2014/06/17/operate-usb-device-under-android-by-libusb-without-root/">Android 用 libusb 操作 USB 设备，无须 root</a>
+          </li>
+        
+          <li>
+            <a href="/2012/12/20/dr-com/">Android 1.5 适用的 Dr.com 客户端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Zhang Hu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
